@@ -2,7 +2,7 @@
 
 <p align="left">
     <a href="https://isocpp.org/">
-        <img src="https://img.shields.io/badge/language-C%2B%2B17-blue.svg">
+        <img src="https://img.shields.io/badge/language-C%2B%2B11-blue.svg">
     </a>
     <a href="https://gitmoji.dev/">
         <img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square">
