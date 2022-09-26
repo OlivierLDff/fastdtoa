@@ -217,7 +217,6 @@ if(FASTDTOA_ENABLE_INSTALL)
     INCLUDE_HEADER_PATTERN "*.hpp"
     NAMESPACE fastdtoa
     COMPATIBILITY SameMinorVersion
-    DEPENDENCIES "Microsoft.GSL"
   )
 
 endif()
