@@ -13,7 +13,7 @@
 </p>
 
 Implements the Grisu2 algorithm for binary to decimal floating-point conversion.
-This project source code is copied from [simdkson/.../to_chars.cpp](https://github.com/simdjson/simdjson/blob/master/src/to_chars.cpp). It is extracted into a standalone a library for convenience.
+This project source code is copied from [simdjson/.../to_chars.cpp](https://github.com/simdjson/simdjson/blob/master/src/to_chars.cpp). It is extracted into a standalone a library for convenience.
 
 ### ✨ Features
 
