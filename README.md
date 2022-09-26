@@ -12,7 +12,8 @@
     </a>
 </p>
 
-implements the Grisu2 algorithm for binary to decimal floating-point conversion.
+Implements the Grisu2 algorithm for binary to decimal floating-point conversion.
+This project source code is copied from [simdkson/.../to_chars.cpp](https://github.com/simdjson/simdjson/blob/master/src/to_chars.cpp). It is extracted into a standalone a library for convenience.
 
 ### ✨ Features
 
@@ -24,8 +25,17 @@ implements the Grisu2 algorithm for binary to decimal floating-point conversion.
 
 int main(int argc, char* argv[])
 {
-    // todo
+    std::cout << "12 = " << fastdtoa::to_string(12.) << std::endl;
+    std::cout << "-12.1 = " << fastdtoa::to_string(-12.1) << std::endl;
+    std::cout << "0.123100034 = " << fastdtoa::to_string(0.123100034) << std::endl;
+    std::cout << "1000000000000000000 = " << fastdtoa::to_string(1e+18) << std::endl;
 }
+
+// Output:
+// 12 = 12
+// -12.1 = -12.1
+// 0.123100034 = 0.123100034
+// 1000000000000000000 = 1e+18
 ```
 
 > Example can be found in [examples/fastdtoa_example.cpp](./examples/fastdtoa_example.cpp).

@@ -182,6 +182,7 @@ endif()
 target_sources(
   ${FASTDTOA_TARGET}
   PRIVATE src/fastdtoa/fastdtoa.hpp
+  PRIVATE src/fastdtoa/fastdtoa.cpp
   PRIVATE src/fastdtoa/export.hpp
   PRIVATE src/fastdtoa/version.hpp
   PRIVATE src/fastdtoa/version.cpp
