@@ -1,0 +1,48 @@
+name: ✅ Unit Tests
+
+on: [push]
+
+jobs:
+  Test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        build-type: [Release]
+    steps:
+      -
+        uses: actions/checkout@v2
+      -
+        name: 🔧 fastdtoa
+        run: |
+          cmake -E make_directory build
+          cmake -DCMAKE_BUILD_TYPE="${{ matrix.build-type }}"   \
+                -DCMAKE_INSTALL_PREFIX=build/output             \
+                -B build -S .
+        shell: bash
+      -
+        name: 🔨 fastdtoa
+        run: cmake --build build --config "${{ matrix.build-type }}" --target "fastdtoa" -j
+      -
+        name: 🔨 fastdtoa_tests
+        run: cmake --build build --config "${{ matrix.build-type }}" --target "fastdtoa_tests" -j
+      -
+        name: 🔨 fastdtoa_example
+        run: cmake --build build --config "${{ matrix.build-type }}" --target "fastdtoa_example" -j
+      -
+        name: ✅ Unit Tests
+        run: cd build && ctest --build-config "${{ matrix.build-type }}" --progress --verbose
+      -
+        name: 📦️ install
+        run: cmake --build build --config "${{ matrix.build-type }}" --target install
+      -
+        name: 🔧 fastdtoa install
+        run: |
+          cmake -E make_directory build-install
+          cmake -DCMAKE_BUILD_TYPE="${{ matrix.build-type }}"   \
+                -DCMAKE_PREFIX_PATH=$(pwd)/build/output        \
+                -B build-install -S ./examples/install
+        shell: bash
+      -
+        name: 🔨 install example
+        run: cmake --build build-install --config "${{ matrix.build-type }}" --target "fastdtoa_example" -j

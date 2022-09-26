@@ -1,0 +1,27 @@
+name: 🎨 Run Linters
+
+on: [push]
+
+jobs:
+
+  clang-format:
+    if: "!contains(github.event.head_commit.message, '🎨')"
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: DoozyX/clang-format-lint-action@33bcef1963b6f0f81093227cea9aff29232b84a9
+      name: "🎨 Run clang-format"
+      with:
+        source: '.'
+        extensions: 'hpp,cpp'
+        clangFormatVersion: 14
+        inplace: True
+    - uses: EndBug/add-and-commit@e5287e06b102e04d718fdd08716461075475dff4
+      name: "Commit clang-format Change"
+      with:
+        author_name: Clang Robot
+        author_email: robot@clang-format.com
+        message: '🎨 Run clang-format'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
